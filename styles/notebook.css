@@ -1,0 +1,7 @@
+#notebook { padding-top:0px !important; } /* eliminate top gray */
+.container { width:100% !important; } /* eliminate side gray */
+.end_space { min-height:0px !important; } /* eliminate bottom gray */
+#notebook-container { 
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  }
