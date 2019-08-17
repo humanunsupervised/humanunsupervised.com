@@ -17,6 +17,7 @@
     -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
   }
+  
     /*!
 *
 * Twitter Bootstrap
@@ -13131,7 +13132,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Logistic Regression is one of the most well known regression algorithms in the world and is used extensively in classification problems (ie labelling inputs as belonging to a particular class.)</p>
-<p>Similar principles to Linear regression apply here and we go through how we implement cost functions and gradient descent for logistic regression problems. We also explore optimisation algorithms and some practical Matlab code implementing gradient descent.</p>
+<p>Similar principles to Linear regression apply here and we go through how we implement cost functions and gradient descent for logistic regression problems.</p>
+<p>We also explore some new concepts. Including optimisation algorithms and some practical Matlab code implementing gradient descent, how to recognise overfitting and underfitting, and regularisation.</p>
 <p>Logistic regression is essentially learning and forms the basis for studying Neural Nets later on.</p>
 <hr>
 <h2 id="Hypothesis">Hypothesis<a class="anchor-link" href="#Hypothesis">&#182;</a></h2><p>Sigmoid Function
@@ -13304,11 +13306,148 @@ div#notebook {
 <br clear="both"/></p>
 <p>We first need to provide a function that evaluates the following two functions for a given input value Î¸:
 <br clear="both"/>
-<img src='images/lesson3/35.png' style="float:left" width="200px"/>
-<br clear="both"/></p>
-<p>Cost function in code, output used by optimisation
+<img src='images/lesson3/35.png' style="float:left" width="100px"/>
+<br clear="both"/>
 <br clear="both"/>
 <img src='images/lesson3/36.png' style="float:left" width="400px"/>
+<br clear="both"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Cost-function---Intuition">Cost function - Intuition<a class="anchor-link" href="#Cost-function---Intuition">&#182;</a></h2><p>Cost function - For logistic regression
+<br clear="both"/>
+<img src='images/lesson3/38.png' style="float:left" width="400px"/>
+<br clear="both"/></p>
+<p>For y = 1, then the Cost function approaches infinity as h(x) decreases to 0 (ie decreases in costs because the hypothesis starts to match the actuals)
+<br clear="both"/>
+<img src='images/lesson3/39.png' style="float:left" width="400px"/>
+<br clear="both"/></p>
+<p>For y = 0, then the Cost function approaches infinity when h(x) increases to 1
+<br clear="both"/>
+<img src='images/lesson3/41.png' style="float:left" width="400px"/>
+<br clear="both"/></p>
+<h2 id="Decision-Boundary">Decision Boundary<a class="anchor-link" href="#Decision-Boundary">&#182;</a></h2><p>When g(z) &gt;= 0.5, then it's INPUT (z) &gt;= Zero
+<br clear="both"/>
+<img src='images/lesson3/42.png' style="float:left" width="200px"/>
+<br clear="both"/></p>
+<p>Decision Boundary - when z = Ã¸(T)x, then when z &gt;= 0, predicted y = 1
+<br clear="both"/>
+<img src='images/lesson3/43.png' style="float:left" width="600px"/>
+<br clear="both"/>
+<br clear="both"/>
+<img src='images/lesson3/44.png' style="float:left" width="200px"/>
+<br clear="both"/>
+<br clear="both"/>
+<img src='images/lesson3/45.png' style="float:left" width="200px"/>
+<br clear="both"/></p>
+<p>Decision Boundary
+<br clear="both"/>
+<img src='images/lesson3/46.png' style="float:left" width="600px"/>
+<br clear="both"/></p>
+<p>Summary
+<br clear="both"/>
+<img src='images/lesson3/47.png' style="float:left" width="150px"/>
+<br clear="both"/>
+<br clear="both"/>
+<img src='images/lesson3/48.png' style="float:left" width="800px"/>
+<br clear="both"/></p>
+<p>Non-linear decision boundaries - and choosing Ã¸
+<br clear="both"/>
+<img src='images/lesson3/49.png' style="float:left" width="600px"/>
+<br clear="both"/>
+<br clear="both"/>
+<img src='images/lesson3/50.png' style="float:left" width="600px"/>
+<br clear="both"/></p>
+<h2 id="Hypothesis-Intuition">Hypothesis Intuition<a class="anchor-link" href="#Hypothesis-Intuition">&#182;</a></h2><p>Interpretation of Sigmoid - using probabilities
+<br clear="both"/>
+<img src='images/lesson3/51.png' style="float:left" width="500px"/>
+<br clear="both"/>
+<br clear="both"/>
+<img src='images/lesson3/52.png' style="float:left" width="500px"/>
+<br clear="both"/>
+<br clear="both"/>
+<img src='images/lesson3/53.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Logistic regression hypotheses function
+<br clear="both"/>
+<img src='images/lesson3/54.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Overfitting">Overfitting<a class="anchor-link" href="#Overfitting">&#182;</a></h2><p>Overfitting - Linear Regression
+<br clear="both"/>
+<img src='images/lesson3/55.png' style="float:left" width="800px"/>
+<br clear="both"/></p>
+<p>Overfitting definition - if you have too many features the learned hypothesis may fit the training set very well, but fail to generalise to new examples
+<br clear="both"/>
+<img src='images/lesson3/56.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Overfitting for Logisitic Regression
+<br clear="both"/>
+<img src='images/lesson3/57.png' style="float:left" width="700px"/>
+<br clear="both"/></p>
+<p>Addressing overfitting: Reduce number of features
+<br clear="both"/>
+<img src='images/lesson3/58.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Addressing overfitting: Regularisation
+<br clear="both"/>
+<img src='images/lesson3/59.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Now with all optimal h(x) computed, choose the max
+<br clear="both"/>
+<img src='images/lesson3/60.png' style="float:left" width="200px"/>
+<br clear="both"/></p>
+<h2 id="Regularisation">Regularisation<a class="anchor-link" href="#Regularisation">&#182;</a></h2><p>The following regularisation methods are identical for both Logistic and Linear regression. Although the examples here show linear regression, you can add the same regularisation terms to the logistic regression cost and gradient</p>
+<h2 id="Regularisation:-Cost-Function">Regularisation: Cost Function<a class="anchor-link" href="#Regularisation:-Cost-Function">&#182;</a></h2><p>Regularisation
+<br clear="both"/>
+<img src='images/lesson3/61.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>If we have overfitting from our hypothesis function h(x), we can reduce the weight that some of the terms in our function carry by INCREASING their COST in the cost function J(Ã¸)</p>
+<p>Don't make the regulariastaion too large, because... underfitting...
+<br clear="both"/>
+<img src='images/lesson3/62.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Intuition for overfitting
+<br clear="both"/>
+<img src='images/lesson3/63.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<h2 id="Regularisation:-Gradient-Descent">Regularisation: Gradient Descent<a class="anchor-link" href="#Regularisation:-Gradient-Descent">&#182;</a></h2><p>Regularisation with Gradient descent. Only add the regularisation term to theta 1 and above
+<br clear="both"/>
+<img src='images/lesson3/64.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Remember: This term is outside the summation and does NOT include the bias unit. Hence why m in the summation starts from 1
+<br clear="both"/>
+<img src='images/lesson3/65.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Regularisation using gradient descent can also be expressed with this.
+<br clear="both"/>
+<img src='images/lesson3/66.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>This term in the equation above has an interesting property where it is generally less than one
+<br clear="both"/>
+<img src='images/lesson3/67.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<h2 id="Regularisation:-Normal">Regularisation: Normal<a class="anchor-link" href="#Regularisation:-Normal">&#182;</a></h2><p>Regulariasation using the normal equation
+<br clear="both"/>
+<img src='images/lesson3/68.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Regularisation using the normal (to find the min of J), in vector form
+<br clear="both"/>
+<img src='images/lesson3/69.png' style="float:left" width="500px"/>
+<br clear="both"/></p>
+<p>Optional (but interesting) - TLDR can avoid the problem of non-invertability by making lambda &gt; 0. So regularisation also solves this problem if lambda is &gt; 0
+<br clear="both"/>
+<img src='images/lesson3/70.png' style="float:left" width="500px"/>
 <br clear="both"/></p>
 
 </div>
